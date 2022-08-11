@@ -1,0 +1,67 @@
+version: '1'
+services:
+
+  portainer:
+    container_name: portainer
+    image: portainer/portainer
+    restart: unless-stopped
+    ports:
+      - 9000:9000
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./volumes/portainer/data:/data
+
+  nodered:
+    container_name: nodered
+    build: ./services/nodered/.
+    restart: unless-stopped
+    user: "0"
+    privileged: true
+    environment: 
+      - TZ=Etc/UTC
+    ports:
+      - 1880:1880
+    volumes:
+      - ./volumes/nodered/data:/data
+
+  influxdb:
+    container_name: influxdb
+    image: "influxdb:latest"
+    restart: unless-stopped
+    ports:
+      - 8086:8086
+      - 8083:8083
+      - 2003:2003
+    environment:
+      - DOCKER_INFLUXDB_INIT_MODE=setup 
+      - DOCKER_INFLUXDB_INIT_USERNAME=inituser
+      - DOCKER_INFLUXDB_INIT_PASSWORD=initpass
+      - DOCKER_INFLUXDB_INIT_ORG=MyORG
+      - DOCKER_INFLUXDB_INIT_BUCKET=testing
+      - DOCKER_INFLUXDB_INIT_RETENTION=1w
+      - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=initadminpass
+    volumes:
+      - ./volumes/influxdb/data:/var/lib/influxdb2
+      - ./volumes/influxdb/config:/etc/influxdb2
+      - ./backups/influxdb:/var/lib/influxdb/backup
+
+  grafana:
+    container_name: grafana
+    image: docker pull grafana/grafana:8.5.10
+    restart: unless-stopped
+    user: "0"
+    ports:
+      - 3000:3000
+    environment:
+      - TZ=America/Los_Angeles
+      - GF_PATHS_DATA=/var/lib/grafana
+      - GF_PATHS_LOGS=/var/log/grafana
+      #-  [SERVER]
+      #- GF_SERVER_ROOT_URL=http://localhost:3000/grafana
+      #- GF_SERVER_SERVE_FROM_SUB_PATH=true
+      #-  [SECURITY]
+      #- GF_SECURITY_ADMIN_USER=admin
+      #- GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - ./volumes/grafana/data:/var/lib/grafana
+      - ./volumes/grafana/log:/var/log/grafana
