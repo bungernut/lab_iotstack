@@ -26,7 +26,7 @@ services:
 
   influxdb:
     container_name: influxdb
-    image: "influxdb:latest"
+    image: influxdb:latest
     restart: unless-stopped
     ports:
       - 8086:8086
@@ -47,7 +47,7 @@ services:
 
   grafana:
     container_name: grafana
-    image: docker pull grafana/grafana:8.5.10
+    image: grafana/grafana:latest
     restart: unless-stopped
     user: "0"
     ports:
