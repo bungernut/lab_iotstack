@@ -5,7 +5,7 @@ Almost everything you need to replace LabView: NodeRed, InfluxDB, and Grafana, p
 The concept is you have a server on a network with your instruments running modbus or any other communication protocal supported. Anywhere you have SSH access to the server a client can view and manage the services using ssh-port-forwarding. The only external port and traffic should be through SSH so security risks are very low. The server can be almost anything, and any OS as far as I know: Win/Mac/Linux/RPi4. I recommend however a real server running Ubuntu. 
 
 # Setup
-To get started install docker engine on your server following the [official Docker instructions](https://docs.docker.com/desktop/install/ubuntu/).  
+To get started install docker (w/ docker compose) on your server following the [official Docker instructions](https://docs.docker.com/desktop/install/ubuntu/).  
 
 Clone this repository onto the server. I recommend doing this on a drive where you want to store the data, by default it will create a directory in this repository called `volumes` where the images will save their persistant data: flows, database tables, settings, etc.  
 
