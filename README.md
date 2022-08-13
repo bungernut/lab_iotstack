@@ -57,7 +57,7 @@ First login should prompt for creation of admin user and password. Then prompt t
 The initial user and password was inituser/initpass unless you changed it above. 
 ## NodeRed (localhost:1880)
 For whatever reason this does not have users or paswords
-## Grafana
+## Grafana (localhost:3000)
 The default user/pass is admin/admin. When you login it will prompt to change the password, and you can create new users later with varring privlages. 
 
 # Using Containers
