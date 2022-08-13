@@ -61,5 +61,5 @@ For whatever reason this does not have users or paswords
 The default user/pass is admin/admin. When you login it will prompt to change the password, and you can create new users later with varring privlages. 
 
 # Using Containers
-The easiest demonstration is to create a new node to write to the database and plot on grafana. 
+A short demonstration showing the use of the docker stack should be enought to get started.  
 [![DEMO](https://img.youtube.com/vi/OSR40Dc_1BY/0.jpg)](https://www.youtube.com/watch?v=OSR40Dc_1BY)
