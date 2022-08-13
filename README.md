@@ -62,5 +62,4 @@ The default user/pass is admin/admin. When you login it will prompt to change th
 
 # Using Containers
 The easiest demonstration is to create a new node to write to the database and plot on grafana. 
-
-
+[![DEMO](https://img.youtube.com/vi/OSR40Dc_1BY/0.jpg)](https://www.youtube.com/watch?v=OSR40Dc_1BY)
